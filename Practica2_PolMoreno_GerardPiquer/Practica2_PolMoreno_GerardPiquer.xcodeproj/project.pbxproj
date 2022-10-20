@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E23D375B2901AD23004F8D47 /* ContenidorBrossa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E23D37592901AD23004F8D47 /* ContenidorBrossa.cpp */; };
+		E23D375E2901AD4D004F8D47 /* Organic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E23D375C2901AD4D004F8D47 /* Organic.cpp */; };
+		E23D37612901AD5B004F8D47 /* Rebuig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E23D375F2901AD5B004F8D47 /* Rebuig.cpp */; };
+		E23D37642901AD66004F8D47 /* Vidre.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E23D37622901AD66004F8D47 /* Vidre.cpp */; };
+		E23D37672901AD8A004F8D47 /* Poblacio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E23D37652901AD8A004F8D47 /* Poblacio.cpp */; };
+		E23D376A2901ADFA004F8D47 /* Plastic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E23D37682901ADFA004F8D47 /* Plastic.cpp */; };
+		E23D376D2901AE04004F8D47 /* Paper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E23D376B2901AE04004F8D47 /* Paper.cpp */; };
 		E281364E28FEF72300D48474 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E281364D28FEF72300D48474 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +30,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E23D37592901AD23004F8D47 /* ContenidorBrossa.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ContenidorBrossa.cpp; path = Practica2_PolMoreno_GerardPiquer/ContenidorBrossa.cpp; sourceTree = "<group>"; };
+		E23D375A2901AD23004F8D47 /* ContenidorBrossa.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ContenidorBrossa.hpp; path = Practica2_PolMoreno_GerardPiquer/ContenidorBrossa.hpp; sourceTree = "<group>"; };
+		E23D375C2901AD4D004F8D47 /* Organic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Organic.cpp; sourceTree = "<group>"; };
+		E23D375D2901AD4D004F8D47 /* Organic.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Organic.hpp; sourceTree = "<group>"; };
+		E23D375F2901AD5B004F8D47 /* Rebuig.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rebuig.cpp; sourceTree = "<group>"; };
+		E23D37602901AD5B004F8D47 /* Rebuig.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rebuig.hpp; sourceTree = "<group>"; };
+		E23D37622901AD66004F8D47 /* Vidre.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vidre.cpp; sourceTree = "<group>"; };
+		E23D37632901AD66004F8D47 /* Vidre.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vidre.hpp; sourceTree = "<group>"; };
+		E23D37652901AD8A004F8D47 /* Poblacio.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Poblacio.cpp; sourceTree = "<group>"; };
+		E23D37662901AD8A004F8D47 /* Poblacio.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Poblacio.hpp; sourceTree = "<group>"; };
+		E23D37682901ADFA004F8D47 /* Plastic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Plastic.cpp; sourceTree = "<group>"; };
+		E23D37692901ADFA004F8D47 /* Plastic.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Plastic.hpp; sourceTree = "<group>"; };
+		E23D376B2901AE04004F8D47 /* Paper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Paper.cpp; sourceTree = "<group>"; };
+		E23D376C2901AE04004F8D47 /* Paper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Paper.hpp; sourceTree = "<group>"; };
 		E281364A28FEF72300D48474 /* Practica2_PolMoreno_GerardPiquer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Practica2_PolMoreno_GerardPiquer; sourceTree = BUILT_PRODUCTS_DIR; };
 		E281364D28FEF72300D48474 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,6 +62,20 @@
 		E281364128FEF72300D48474 = {
 			isa = PBXGroup;
 			children = (
+				E23D376B2901AE04004F8D47 /* Paper.cpp */,
+				E23D376C2901AE04004F8D47 /* Paper.hpp */,
+				E23D37682901ADFA004F8D47 /* Plastic.cpp */,
+				E23D37692901ADFA004F8D47 /* Plastic.hpp */,
+				E23D37652901AD8A004F8D47 /* Poblacio.cpp */,
+				E23D37662901AD8A004F8D47 /* Poblacio.hpp */,
+				E23D37622901AD66004F8D47 /* Vidre.cpp */,
+				E23D37632901AD66004F8D47 /* Vidre.hpp */,
+				E23D375F2901AD5B004F8D47 /* Rebuig.cpp */,
+				E23D37602901AD5B004F8D47 /* Rebuig.hpp */,
+				E23D375C2901AD4D004F8D47 /* Organic.cpp */,
+				E23D375D2901AD4D004F8D47 /* Organic.hpp */,
+				E23D37592901AD23004F8D47 /* ContenidorBrossa.cpp */,
+				E23D375A2901AD23004F8D47 /* ContenidorBrossa.hpp */,
 				E281364C28FEF72300D48474 /* Practica2_PolMoreno_GerardPiquer */,
 				E281364B28FEF72300D48474 /* Products */,
 			);
@@ -119,7 +154,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23D37672901AD8A004F8D47 /* Poblacio.cpp in Sources */,
+				E23D375B2901AD23004F8D47 /* ContenidorBrossa.cpp in Sources */,
+				E23D376D2901AE04004F8D47 /* Paper.cpp in Sources */,
+				E23D37612901AD5B004F8D47 /* Rebuig.cpp in Sources */,
+				E23D375E2901AD4D004F8D47 /* Organic.cpp in Sources */,
+				E23D37642901AD66004F8D47 /* Vidre.cpp in Sources */,
 				E281364E28FEF72300D48474 /* main.cpp in Sources */,
+				E23D376A2901ADFA004F8D47 /* Plastic.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
