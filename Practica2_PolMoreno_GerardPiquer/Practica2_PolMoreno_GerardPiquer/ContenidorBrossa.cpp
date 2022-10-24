@@ -9,25 +9,39 @@
 #include <iostream>
 #include <time.h>
 #include <string.h>
-
+//CONSTRUCTOR NORMAL
 ContenidorBrossa::ContenidorBrossa(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara) {
-    //fer un metode privat check per comprovar si el codi es correcte
+    
+    checkParams(codi, color, anyColocacio, tara);
+    this->codi=codi;
+    this->color=color;
+    this->ubicacio=ubicacio;
+    this->anyColocacio=anyColocacio;
+    this->tara=tara;
+    
+}
+//CONSTRUCTOR SOBRECARREGAT
+ContenidorBrossa::ContenidorBrossa(std::string codi, int color, int anyColocacio,float tara){
+    ContenidorBrossa(codi,color,"MagatzemAjuntament",anyColocacio,tara);
+}
+
+//CHECK DELS PARAMETRES
+void ContenidorBrossa::checkParams(std::string codi, int color,int anyColocacio, float tara){
     if (!checkCodi(codi)) {
         throw "Codi amb valor null";
     }
     if (color != GROC && color != MARRO && color != VERD && color != GRIS && color != BLAU) {
         throw "Color de contenidor no valid, ha de ser de color groc, marro, verd, gris o blau";
     }
-    //fer un metode private check per comprovar si l'any de colocacio es correcte
     if (checkAny(anyColocacio)) {
         throw "L'any de colocacio ha de ser un enter de 4 xifres";
     }
     if (tara <= 0) {
         throw "Valor de tara inferior o igual a 0";
     }
-    
-
 }
+
+//CHECK DEL CODI QUE CONTINGUI LLETRES Y NUMEROS
 bool ContenidorBrossa::checkCodi(std::string codi){
     std::string lletres= codi.substr(0,2);
     std::string numeros= codi.substr(codi.size()-4);
@@ -45,9 +59,6 @@ bool ContenidorBrossa::checkAny(int anyint){
     return false;
 }
 
-// falta sobrecarrega constructor
-
-
 std::string ContenidorBrossa::getTipusBrossa() {
     switch (color) {
         case GROC: return "Plastic";
@@ -56,6 +67,17 @@ std::string ContenidorBrossa::getTipusBrossa() {
         case GRIS: return "Rebuig";
         case BLAU: return "Paper";
     }
+    return "";
+}
+std::string ContenidorBrossa::getColor() {
+    switch (color) {
+        case GROC: return "GROC";
+        case MARRO: return "MARRO";
+        case VERD: return "VERD";
+        case GRIS: return "GRIS";
+        case BLAU: return "BLAU";
+    }
+    return "";
 }
 
 void ContenidorBrossa::retirarViaPublica() {
@@ -110,6 +132,7 @@ std::string ContenidorBrossa::getEstat() {
     if (anys < 3) {
         return "nou";
     }
+    return "";
 }
 
 bool ContenidorBrossa::operator==(ContenidorBrossa *p) {
@@ -126,7 +149,7 @@ bool ContenidorBrossa::operator>(ContenidorBrossa *p) {
 
 void ContenidorBrossa::toString() {
     std::cout << "Codi: " << codi << std::endl;
-    std::cout << "Color: " << //fer metode privat per retornar color en format string
+    std::cout << "Color: " << getColor()<<std::endl;
     std::cout << "Ubicació" << (anyRetirada == 0? ubicacio : "retirat");
     std::cout << "Tara" << tara;
 }
@@ -134,6 +157,8 @@ void ContenidorBrossa::toString() {
 void ContenidorBrossa::buidat(float pes) {
     this->tara = pes;
 }
+
+
 
 ContenidorBrossa::~ContenidorBrossa() {
     
