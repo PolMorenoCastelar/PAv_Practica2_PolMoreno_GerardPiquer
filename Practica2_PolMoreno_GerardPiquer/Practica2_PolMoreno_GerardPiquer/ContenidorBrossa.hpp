@@ -32,6 +32,8 @@ public:
     ~ContenidorBrossa();
     
 private:
+    bool checkCodi(std::string codi);
+    bool checkAny(int any);
     std::string codi;
     int color;
     std::string ubicacio;
