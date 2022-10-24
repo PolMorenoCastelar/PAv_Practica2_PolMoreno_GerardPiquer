@@ -9,5 +9,16 @@
 #define Poblacio_hpp
 
 #include <stdio.h>
+#include "ContenidorBrossa.hpp"
+
+class Poblacio {
+public:
+
+private:
+    struct node {
+        ContenidorBrossa *con;
+        node* seg;
+    };
+};
 
 #endif /* Poblacio_hpp */
