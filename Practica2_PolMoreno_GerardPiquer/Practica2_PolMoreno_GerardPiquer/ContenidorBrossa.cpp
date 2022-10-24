@@ -6,6 +6,9 @@
 //
 
 #include "ContenidorBrossa.hpp"
+#include <iostream>
+#include <time.h>
+#include <string.h>
 
 ContenidorBrossa::ContenidorBrossa(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara) {
     //fer un metode privat check per comprovar si el codi es correcte
@@ -41,3 +44,99 @@ bool ContenidorBrossa::checkAny(int anyint){
     }
     return false;
 }
+
+// falta sobrecarrega constructor
+
+
+std::string ContenidorBrossa::getTipusBrossa() {
+    switch (color) {
+        case GROC: return "Plastic";
+        case MARRO: return "Organic";
+        case VERD: return "Vidre";
+        case GRIS: return "Rebuig";
+        case BLAU: return "Paper";
+    }
+}
+
+void ContenidorBrossa::retirarViaPublica() {
+    time_t now;
+    struct tm *now_tm;
+    now = time(NULL);
+    now_tm = localtime(&now);
+    int year = now_tm -> tm_year+1900;
+    this->anyRetirada = year;
+    this->ubicacio = nullptr;
+    if (anyColocacio == 0) {
+        throw "El contenidor no esta ubicat a la via publica";
+    } else {
+        this->anyColocacio = 0;
+    }
+}
+
+std::string ContenidorBrossa::getUbicacio() {
+    if (anyColocacio == 0) {
+        throw "El contenidor es troba al magatzem";
+    }
+    return ubicacio;
+}
+
+void ContenidorBrossa::setUbicacio(std::string ubicacio) {
+    if (ubicacio.empty()) {
+        retirarViaPublica();
+    }
+    this->ubicacio = ubicacio;
+}
+
+std::string ContenidorBrossa::getCodi() {
+    return codi;
+}
+
+std::string ContenidorBrossa::getEstat() {
+    time_t now;
+    struct tm *now_tm;
+    now = time(NULL);
+    now_tm = localtime(&now);
+    int year = now_tm -> tm_year+1900;
+    int anys = year - anyColocacio;
+    if (anyColocacio == 0) {
+        return "retirat";
+    }
+    if (anys > 5) {
+        return "vell";
+    }
+    if (anys >= 3 && anys <= 5) {
+        return "seminou";
+    }
+    if (anys < 3) {
+        return "nou";
+    }
+}
+
+bool ContenidorBrossa::operator==(ContenidorBrossa *p) {
+    return codi.compare(p->codi);
+}
+
+bool ContenidorBrossa::operator<(ContenidorBrossa *p) {
+    
+}
+
+bool ContenidorBrossa::operator>(ContenidorBrossa *p) {
+    
+}
+
+void ContenidorBrossa::toString() {
+    std::cout << "Codi: " << codi << std::endl;
+    std::cout << "Color: " << //fer metode privat per retornar color en format string
+    std::cout << "Ubicació" << (anyRetirada == 0? ubicacio : "retirat");
+    std::cout << "Tara" << tara;
+}
+
+void ContenidorBrossa::buidat(float pes) {
+    this->tara = pes;
+}
+
+ContenidorBrossa::~ContenidorBrossa() {
+    
+}
+
+

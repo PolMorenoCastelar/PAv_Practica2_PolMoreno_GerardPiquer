@@ -9,5 +9,21 @@
 #define Organic_hpp
 
 #include <stdio.h>
+#include <string>
+#include "ContenidorBrossa.hpp"
+
+class Organic : public ContenidorBrossa {
+public:
+    Organic(std::string codi, std::string ubicacio, int anyColocacio, float tara);
+    std::string getReciclat();
+    void toString();
+    std::string getType();
+    virtual ~Organic();
+    void buidat(float pes);
+    
+    
+private:
+    float reciclat;
+};
 
 #endif /* Organic_hpp */

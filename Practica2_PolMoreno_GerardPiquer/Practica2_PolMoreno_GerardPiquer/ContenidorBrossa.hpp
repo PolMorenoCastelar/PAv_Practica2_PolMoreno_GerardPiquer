@@ -26,10 +26,10 @@ public:
     bool operator<(ContenidorBrossa *p);
     bool operator>(ContenidorBrossa *p);
     void toString();
-    void buidat(float pes);
-    std::string getType();
-    std::string getReciclat();
-    ~ContenidorBrossa();
+    virtual void buidat(float pes);
+    virtual std::string getType();
+    virtual std::string getReciclat();
+    virtual ~ContenidorBrossa();
     
 private:
     bool checkCodi(std::string codi);
