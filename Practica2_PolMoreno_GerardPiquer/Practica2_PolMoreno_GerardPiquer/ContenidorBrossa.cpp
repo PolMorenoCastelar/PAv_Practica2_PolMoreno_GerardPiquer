@@ -140,11 +140,12 @@ bool ContenidorBrossa::operator==(ContenidorBrossa *p) {
 }
 
 bool ContenidorBrossa::operator<(ContenidorBrossa *p) {
+    return codi.compare(p->codi)<0;
     
 }
 
 bool ContenidorBrossa::operator>(ContenidorBrossa *p) {
-    
+    return !(codi==p->codi)&&!(codi<p->codi);
 }
 
 void ContenidorBrossa::toString() {
