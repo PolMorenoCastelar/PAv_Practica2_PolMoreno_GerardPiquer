@@ -158,6 +158,12 @@ void ContenidorBrossa::toString() {
 void ContenidorBrossa::buidat(float pes) {
     this->tara = pes;
 }
+std::string ContenidorBrossa::getType(){
+    return typeid(this).name();
+}
+std::string ContenidorBrossa::getReciclat(){
+    return std::to_string(tara);
+}
 
 
 
