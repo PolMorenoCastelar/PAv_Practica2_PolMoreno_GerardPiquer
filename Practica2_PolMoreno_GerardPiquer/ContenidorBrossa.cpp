@@ -161,4 +161,13 @@ ContenidorBrossa::~ContenidorBrossa() {
     
 }
 
+int colorContenidor(std::string tipus) {
+    if (tipus.compare("Paper")) return ContenidorBrossa::BLAU;
+    else if (tipus.compare("Plastic")) return ContenidorBrossa::GROC;
+    else if (tipus.compare("Vidre")) return ContenidorBrossa::VERD;
+    else if (tipus.compare("Rebuig")) return ContenidorBrossa::GRIS;
+    else if (tipus.compare("Organic")) return ContenidorBrossa::MARRO;
+    return NULL;
+}
+
 

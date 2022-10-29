@@ -25,12 +25,13 @@ Poblacio::Poblacio(ContenidorBrossa *c) : Poblacio() {
 
 void Poblacio::afegirContenidor(ContenidorBrossa *p) {
     std::string tipus = p->getType();
+    int index = p->colorContenidor(tipus);
     if (hiEsContenidor(p, *contenidor)) {
         throw "Aquest contenidor ja es troba al magatzem";
     }
     node *aux = new node();
     aux->con = p;
-    aux->seg = contenidor[p->];
+    aux->seg = contenidor[index];
     *contenidor = aux;
 }
 
@@ -45,7 +46,7 @@ bool Poblacio::hiEsContenidor(ContenidorBrossa *c, node *contenidor) {
 }
 
 void Poblacio::afegirContenidor(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara) {
-    afegirContenidor(new ContenidorBrossa(codi, color, ubicacio, anyColocacio, tara));
+    //no se com fer-el
 }
 
 std::string Poblacio::hiEs(std::string codi) {
@@ -60,10 +61,27 @@ std::string Poblacio::hiEs(std::string codi) {
 }
 
 void Poblacio::eliminarContenidor(ContenidorBrossa *c) {
-    if (!(hiEsContenidor(ContenidorBrossa *c, ))) {
+    std::string tipus = c->getType();
+    int index = c->colorContenidor(tipus);
+    if (!(hiEsContenidor(c, contenidor[index]))) {
         throw "El contenidor no es troba al magatzem";
     }
-    
+    node *aux = nullptr;
+    if (*(contenidor[index]->con) == c) {
+        aux = contenidor[index];
+        contenidor[index] = contenidor[index]->seg;
+    }
+    else {
+        node* anterior = contenidor[index];
+        aux = contenidor[index]->seg;
+        while (!(*(aux->con) == c)) {
+            anterior = aux;
+            aux = aux->seg;
+        }
+        anterior->seg = aux->seg;
+    }
+    delete aux->con;
+    delete aux;
 }
 
 ContenidorBrossa* Poblacio::mesRendiment() {
@@ -73,7 +91,7 @@ ContenidorBrossa* Poblacio::mesRendiment() {
     }
     node *aux = *contenidor;
     while (aux != nullptr) {
-        mesRendiment = aux->con->getReciclat();
+        mesRendiment = aux->con->getReciclat(); //com fer pk el metode retorni nomes l'atribut
     }
 }
 

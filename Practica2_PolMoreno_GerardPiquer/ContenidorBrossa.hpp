@@ -31,6 +31,7 @@ public:
     virtual std::string getReciclat() = 0;
     virtual ~ContenidorBrossa();
     std::string getColor();
+    int colorContenidor(std::string tipus);
     
 private:
     void checkParams(std::string,int,int,float);
