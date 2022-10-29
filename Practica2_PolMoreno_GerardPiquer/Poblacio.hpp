@@ -14,8 +14,9 @@
 class Poblacio {
 public:
     Poblacio();
-    Poblacio(ContenidorBrossa* c);
-    void afegirContenidor(ContenidorBrossa *g);
+    Poblacio(ContenidorBrossa* g);
+    virtual ~Poblacio();
+    void afegirContenidor(ContenidorBrossa *p);
     void afegirContenidor(std::string codi, int color, std::string ubicacio,int anyColocacio,float tara);
     std::string hiEs(std::string codi);
     void eliminarContenidor(ContenidorBrossa *c);
@@ -28,13 +29,13 @@ public:
     void toString();
     
 private:
-    
     struct node {
         ContenidorBrossa *con;
         node* seg;
     };
     node** contenidor;
-    bool hiEsContenidor(ContenidorBrossa *c,node *contenidor);
+    bool hiEsContenidor(ContenidorBrossa *c, node *contenidor);
+    void eliminarRecursivament(node*);
 };
 
 #endif /* Poblacio_hpp */

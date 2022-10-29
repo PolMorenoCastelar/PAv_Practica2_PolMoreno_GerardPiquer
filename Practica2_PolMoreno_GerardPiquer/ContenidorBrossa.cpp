@@ -9,9 +9,9 @@
 #include <iostream>
 #include <time.h>
 #include <string.h>
+
 //CONSTRUCTOR NORMAL
 ContenidorBrossa::ContenidorBrossa(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara) {
-    
     checkParams(codi, color, anyColocacio, tara);
     this->codi=codi;
     this->color=color;
@@ -20,13 +20,13 @@ ContenidorBrossa::ContenidorBrossa(std::string codi, int color, std::string ubic
     this->tara=tara;
     
 }
+
 //CONSTRUCTOR SOBRECARREGAT
-ContenidorBrossa::ContenidorBrossa(std::string codi, int color, int anyColocacio,float tara){
-    ContenidorBrossa(codi,color,"MagatzemAjuntament",anyColocacio,tara);
+ContenidorBrossa::ContenidorBrossa(std::string codi, int color, int anyColocacio,float tara) : ContenidorBrossa(codi, color, NULL, anyColocacio, tara) {
 }
 
 //CHECK DELS PARAMETRES
-void ContenidorBrossa::checkParams(std::string codi, int color,int anyColocacio, float tara){
+void ContenidorBrossa::checkParams(std::string codi, int color, int anyColocacio, float tara) {
     if (!checkCodi(codi)) {
         throw "Codi amb valor null";
     }
@@ -42,18 +42,19 @@ void ContenidorBrossa::checkParams(std::string codi, int color,int anyColocacio,
 }
 
 //CHECK DEL CODI QUE CONTINGUI LLETRES Y NUMEROS
-bool ContenidorBrossa::checkCodi(std::string codi){
-    std::string lletres= codi.substr(0,2);
-    std::string numeros= codi.substr(codi.size()-4);
-    bool teLletres= lletres.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") ==
+bool ContenidorBrossa::checkCodi(std::string codi) {
+    std::string lletres = codi.substr(0,2);
+    std::string numeros = codi.substr(codi.size()-4);
+    bool teLletres = lletres.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") ==
     std::string::npos;
-    bool teNumeros=numeros.find_first_not_of("0123456789") ==
+    bool teNumeros = numeros.find_first_not_of("0123456789") ==
     std::string::npos;
     return teLletres&&teNumeros;
-    }
-bool ContenidorBrossa::checkAny(int anyint){
+}
+
+bool ContenidorBrossa::checkAny(int anyint) {
     std::string any = std::to_string(anyint);
-    if(any.size()==4 && any.find_first_not_of("0123456789")== std::string::npos){
+    if (any.size() == 4 && any.find_first_not_of("0123456789") == std::string::npos) {
         return true;
     }
     return false;
@@ -69,6 +70,7 @@ std::string ContenidorBrossa::getTipusBrossa() {
     }
     return "";
 }
+
 std::string ContenidorBrossa::getColor() {
     switch (color) {
         case GROC: return "GROC";
@@ -154,18 +156,6 @@ void ContenidorBrossa::toString() {
     std::cout << "Ubicació" << (anyRetirada == 0? ubicacio : "retirat");
     std::cout << "Tara" << tara;
 }
-
-void ContenidorBrossa::buidat(float pes) {
-    this->tara = pes;
-}
-std::string ContenidorBrossa::getType(){
-    return typeid(this).name();
-}
-std::string ContenidorBrossa::getReciclat(){
-    return std::to_string(tara);
-}
-
-
 
 ContenidorBrossa::~ContenidorBrossa() {
     

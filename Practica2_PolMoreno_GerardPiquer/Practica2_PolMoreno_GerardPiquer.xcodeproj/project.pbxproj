@@ -30,8 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E23D37592901AD23004F8D47 /* ContenidorBrossa.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ContenidorBrossa.cpp; path = Practica2_PolMoreno_GerardPiquer/ContenidorBrossa.cpp; sourceTree = "<group>"; };
-		E23D375A2901AD23004F8D47 /* ContenidorBrossa.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ContenidorBrossa.hpp; path = Practica2_PolMoreno_GerardPiquer/ContenidorBrossa.hpp; sourceTree = "<group>"; };
+		E23D37592901AD23004F8D47 /* ContenidorBrossa.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ContenidorBrossa.cpp; sourceTree = "<group>"; };
+		E23D375A2901AD23004F8D47 /* ContenidorBrossa.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ContenidorBrossa.hpp; sourceTree = "<group>"; };
 		E23D375C2901AD4D004F8D47 /* Organic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Organic.cpp; sourceTree = "<group>"; };
 		E23D375D2901AD4D004F8D47 /* Organic.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Organic.hpp; sourceTree = "<group>"; };
 		E23D375F2901AD5B004F8D47 /* Rebuig.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rebuig.cpp; sourceTree = "<group>"; };
@@ -62,20 +62,20 @@
 		E281364128FEF72300D48474 = {
 			isa = PBXGroup;
 			children = (
-				E23D376B2901AE04004F8D47 /* Paper.cpp */,
+				E23D375A2901AD23004F8D47 /* ContenidorBrossa.hpp */,
 				E23D376C2901AE04004F8D47 /* Paper.hpp */,
-				E23D37682901ADFA004F8D47 /* Plastic.cpp */,
 				E23D37692901ADFA004F8D47 /* Plastic.hpp */,
-				E23D37652901AD8A004F8D47 /* Poblacio.cpp */,
+				E23D376B2901AE04004F8D47 /* Paper.cpp */,
 				E23D37662901AD8A004F8D47 /* Poblacio.hpp */,
 				E23D37622901AD66004F8D47 /* Vidre.cpp */,
 				E23D37632901AD66004F8D47 /* Vidre.hpp */,
-				E23D375F2901AD5B004F8D47 /* Rebuig.cpp */,
 				E23D37602901AD5B004F8D47 /* Rebuig.hpp */,
 				E23D375C2901AD4D004F8D47 /* Organic.cpp */,
+				E23D375F2901AD5B004F8D47 /* Rebuig.cpp */,
 				E23D375D2901AD4D004F8D47 /* Organic.hpp */,
 				E23D37592901AD23004F8D47 /* ContenidorBrossa.cpp */,
-				E23D375A2901AD23004F8D47 /* ContenidorBrossa.hpp */,
+				E23D37652901AD8A004F8D47 /* Poblacio.cpp */,
+				E23D37682901ADFA004F8D47 /* Plastic.cpp */,
 				E281364C28FEF72300D48474 /* Practica2_PolMoreno_GerardPiquer */,
 				E281364B28FEF72300D48474 /* Products */,
 			);

@@ -13,11 +13,10 @@
 
 class ContenidorBrossa {
 public:
-    static const int GROC = 1, MARRO = 2, VERD = 3, GRIS = 4, BLAU = 5;
+    static const int GROC = 0, MARRO = 1, VERD = 2, GRIS = 3, BLAU = 4;
     ContenidorBrossa(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara);
     ContenidorBrossa(std::string codi, int color, int anyColocacio, float tara);
     std::string getTipusBrossa();
-    std::string getColor();
     void retirarViaPublica();
     std::string getUbicacio();
     void setUbicacio(std::string ubicacio);
@@ -27,10 +26,11 @@ public:
     bool operator<(ContenidorBrossa *p);
     bool operator>(ContenidorBrossa *p);
     void toString();
-    virtual void buidat(float pes);
-    virtual std::string getType();
-    virtual std::string getReciclat();
+    virtual void buidat(float pes) = 0;
+    virtual std::string getType() = 0;
+    virtual std::string getReciclat() = 0;
     virtual ~ContenidorBrossa();
+    std::string getColor();
     
 private:
     void checkParams(std::string,int,int,float);
