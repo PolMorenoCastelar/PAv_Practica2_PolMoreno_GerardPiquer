@@ -29,17 +29,19 @@ void Poblacio::afegirContenidor(ContenidorBrossa *p) noexcept(false) {
     if (hiEsContenidor(p, *contenidor)) {
         throw "Aquest contenidor ja es troba al magatzem";
     }
-    node *aux = contenidor[index];
-    node *ult = nullptr;
-    if (aux != nullptr) {
-        ult->seg = new node();
-        ult->seg->con = p;
-        ult = ult->seg;
+    node *aux = new node();
+    aux->con = p;
+    aux->seg = nullptr;
+    if (contenidor[index] == nullptr) {
+        contenidor[index] = aux;
     } else {
-        aux = new node();
-        aux->con = p;
-        ult = aux;
+        node *aux2 = contenidor[index];
+        while (aux2->seg != nullptr) {
+            aux2 = aux2->seg;
+        }
+        aux2->seg = contenidor[index];
     }
+    
 }
 
 bool Poblacio::hiEsContenidor(ContenidorBrossa *c, node *contenidor) {
