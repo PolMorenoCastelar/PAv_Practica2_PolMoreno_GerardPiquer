@@ -9,6 +9,11 @@
 #include <iostream>
 #include <time.h>
 #include <string.h>
+#include "Paper.hpp"
+#include "Plastic.hpp"
+#include "Vidre.hpp"
+#include "Rebuig.hpp"
+#include "Organic.hpp"
 
 Poblacio::Poblacio(){
     contenidor = new node*[5];
@@ -24,24 +29,29 @@ Poblacio::Poblacio(ContenidorBrossa *c) : Poblacio() {
 }
 
 void Poblacio::afegirContenidor(ContenidorBrossa *p) noexcept(false) {
-    std::string tipus = p->getType();
-    int index = p->colorContenidor(tipus);
-    if (hiEsContenidor(p, *contenidor)) {
+    int index = onVa(p);
+    if (hiEsContenidor(p, contenidor[index])) {
         throw "Aquest contenidor ja es troba al magatzem";
     }
-    node *aux = new node();
-    aux->con = p;
-    aux->seg = nullptr;
-    if (contenidor[index] == nullptr) {
-        contenidor[index] = aux;
-    } else {
-        node *aux2 = contenidor[index];
-        while (aux2->seg != nullptr) {
-            aux2 = aux2->seg;
-        }
-        aux2->seg = contenidor[index];
+    node *nouNode = new node();
+    nouNode->con = p;
+    nouNode->seg = contenidor[index];
+    contenidor[index] = nouNode;
+}
+
+int Poblacio::onVa(ContenidorBrossa *p) {
+    if (p->getType().compare("PAPER") == 0) {
+        return ContenidorBrossa::BLAU;
+    } else if (p->getType().compare("PLASTIC") == 0) {
+        return ContenidorBrossa::GROC;
+    } else if (p->getType().compare("VIDRE") == 0) {
+        return ContenidorBrossa::VERD;
+    } else if (p->getType().compare("REBUIG") == 0) {
+        return ContenidorBrossa::GRIS;
+    } else if (p->getType().compare("ORGANIC") == 0) {
+        return ContenidorBrossa::MARRO;
     }
-    
+    return NULL;
 }
 
 bool Poblacio::hiEsContenidor(ContenidorBrossa *c, node *contenidor) {
@@ -55,7 +65,17 @@ bool Poblacio::hiEsContenidor(ContenidorBrossa *c, node *contenidor) {
 }
 
 void Poblacio::afegirContenidor(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara) noexcept(false) {
-    //no se com fer-el
+    if (color == ContenidorBrossa::BLAU) {
+        afegirContenidor(new Paper(codi, ubicacio, anyColocacio, tara));
+    } else if (color == ContenidorBrossa::GROC) {
+        afegirContenidor(new Plastic(codi, ubicacio, anyColocacio, tara));
+    } else if (color == ContenidorBrossa::VERD) {
+        afegirContenidor(new Vidre(codi, ubicacio, anyColocacio, tara));
+    } else if (color == ContenidorBrossa::GRIS) {
+        afegirContenidor(new Rebuig(codi, ubicacio, anyColocacio, tara));
+    } else if (color == ContenidorBrossa::MARRO) {
+        afegirContenidor(new Organic(codi, ubicacio, anyColocacio, tara));
+    }
 }
 
 std::string Poblacio::hiEs(std::string codi) noexcept(false) {
@@ -70,8 +90,7 @@ std::string Poblacio::hiEs(std::string codi) noexcept(false) {
 }
 
 void Poblacio::eliminarContenidor(ContenidorBrossa *c) noexcept(false) {
-    std::string tipus = c->getType();
-    int index = c->colorContenidor(tipus);
+    int index = onVa(c);
     if (!(hiEsContenidor(c, contenidor[index]))) {
         throw "El contenidor no es troba al magatzem";
     }
@@ -176,7 +195,7 @@ void Poblacio::toString() {
         gris = gris->seg;
     }
     while (blau != nullptr) {
-        std::cout << "Contenidors balus" << std::endl;
+        std::cout << "Contenidors blaus" << std::endl;
         blau->con->toString();
         blau = blau->seg;
     }

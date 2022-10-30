@@ -32,7 +32,6 @@ public:
     virtual ~ContenidorBrossa();
     virtual float quantReciclat() = 0;
     std::string getColor();
-    int colorContenidor(std::string tipus);
     
 private:
     std::string codi;

@@ -23,7 +23,7 @@ void Plastic::toString() {
 }
 
 std::string Plastic::getType() {
-    return "Plastic";
+    return "PLASTIC";
 }
 
 Plastic::~Plastic() {

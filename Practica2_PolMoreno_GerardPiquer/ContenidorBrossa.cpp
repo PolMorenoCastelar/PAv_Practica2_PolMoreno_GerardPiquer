@@ -61,11 +61,11 @@ bool ContenidorBrossa::checkAny(int any) {
 
 std::string ContenidorBrossa::getTipusBrossa() {
     switch (color) {
-        case GROC: return "Plastic";
-        case MARRO: return "Organic";
-        case VERD: return "Vidre";
-        case GRIS: return "Rebuig";
-        case BLAU: return "Paper";
+        case GROC: return "PLASTIC";
+        case MARRO: return "ORGANIC";
+        case VERD: return "VIDRE";
+        case GRIS: return "REBUIG";
+        case BLAU: return "PAPER";
     }
     return "";
 }
@@ -158,15 +158,6 @@ void ContenidorBrossa::toString() {
 
 ContenidorBrossa::~ContenidorBrossa() {
     
-}
-
-int ContenidorBrossa::colorContenidor(std::string tipus) {
-    if (tipus.compare("Paper")) return ContenidorBrossa::BLAU;
-    else if (tipus.compare("Plastic")) return ContenidorBrossa::GROC;
-    else if (tipus.compare("Vidre")) return ContenidorBrossa::VERD;
-    else if (tipus.compare("Rebuig")) return ContenidorBrossa::GRIS;
-    else if (tipus.compare("Organic")) return ContenidorBrossa::MARRO;
-    return NULL;
 }
 
 

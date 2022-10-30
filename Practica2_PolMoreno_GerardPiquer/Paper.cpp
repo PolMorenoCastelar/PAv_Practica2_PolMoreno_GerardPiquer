@@ -23,7 +23,7 @@ void Paper::toString() {
 }
 
 std::string Paper::getType() {
-    return "Paper";
+    return "PAPER";
 }
 
 Paper::~Paper() {

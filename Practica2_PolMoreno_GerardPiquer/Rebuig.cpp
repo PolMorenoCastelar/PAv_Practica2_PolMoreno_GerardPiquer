@@ -23,7 +23,7 @@ void Rebuig::toString() {
 }
 
 std::string Rebuig::getType() {
-    return "Rebuig";
+    return "REBUIG";
 }
 
 Rebuig::~Rebuig() {

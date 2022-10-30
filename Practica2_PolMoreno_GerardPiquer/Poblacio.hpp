@@ -36,6 +36,7 @@ private:
     node** contenidor;
     bool hiEsContenidor(ContenidorBrossa *c, node *contenidor);
     void eliminarRecursivament(node*);
+    int onVa(ContenidorBrossa *p);
 };
 
 #endif /* Poblacio_hpp */

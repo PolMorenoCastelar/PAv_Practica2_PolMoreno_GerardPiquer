@@ -23,7 +23,7 @@ void Vidre::toString() {
 }
 
 std::string Vidre::getType() {
-    return "Vidre";
+    return "VIDRE";
 }
 
 Vidre::~Vidre() {

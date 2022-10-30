@@ -23,7 +23,7 @@ void Organic::toString() {
 }
 
 std::string Organic::getType() {
-    return "Organic";
+    return "ORGANIC";
 }
 
 Organic::~Organic() {
