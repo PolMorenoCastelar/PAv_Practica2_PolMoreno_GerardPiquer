@@ -33,3 +33,7 @@ Plastic::~Plastic() {
 void Plastic::buidat(float pes) {
     reciclat = (pes - tara)*1.80;
 }
+
+float Plastic::quantReciclat() {
+    return reciclat;
+}

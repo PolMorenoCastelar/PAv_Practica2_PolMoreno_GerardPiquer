@@ -33,3 +33,7 @@ Organic::~Organic() {
 void Organic::buidat(float pes) {
     reciclat = (pes - tara)*1.90;
 }
+
+float Organic::quantReciclat() {
+    return reciclat;
+}

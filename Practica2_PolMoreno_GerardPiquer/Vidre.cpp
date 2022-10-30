@@ -33,3 +33,7 @@ Vidre::~Vidre() {
 void Vidre::buidat(float pes) {
     reciclat = (pes - tara)*3;
 }
+
+float Vidre::quantReciclat() {
+    return (float)reciclat;
+}

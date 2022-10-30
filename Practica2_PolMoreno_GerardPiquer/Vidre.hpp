@@ -20,7 +20,7 @@ public:
     std::string getType();
     virtual ~Vidre();
     void buidat(float pes);
-    
+    float quantReciclat();
     
 private:
     long reciclat;

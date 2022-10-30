@@ -9,7 +9,7 @@
 #include <iostream>
 
 Paper::Paper(std::string codi, std::string ubicacio, int anyColocacio, float tara) :
-    ContenidorBrossa(codi, ContenidorBrossa::BLAU, ubicacio, anyColocacio, tara){
+    ContenidorBrossa(codi, ContenidorBrossa::BLAU, ubicacio, anyColocacio, tara) {
         this->reciclat = 0;
 }
 
@@ -32,4 +32,8 @@ Paper::~Paper() {
 
 void Paper::buidat(float pes) {
     reciclat = (pes - tara)*1.95;
+}
+
+float Paper::quantReciclat() {
+    return reciclat;
 }

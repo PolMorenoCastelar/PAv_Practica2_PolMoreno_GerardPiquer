@@ -23,16 +23,23 @@ Poblacio::Poblacio(ContenidorBrossa *c) : Poblacio() {
     afegirContenidor(c);
 }
 
-void Poblacio::afegirContenidor(ContenidorBrossa *p) {
+void Poblacio::afegirContenidor(ContenidorBrossa *p) noexcept(false) {
     std::string tipus = p->getType();
     int index = p->colorContenidor(tipus);
     if (hiEsContenidor(p, *contenidor)) {
         throw "Aquest contenidor ja es troba al magatzem";
     }
-    node *aux = new node();
-    aux->con = p;
-    aux->seg = contenidor[index];
-    *contenidor = aux;
+    node *aux = contenidor[index];
+    node *ult = nullptr;
+    if (aux != nullptr) {
+        ult->seg = new node();
+        ult->seg->con = p;
+        ult = ult->seg;
+    } else {
+        aux = new node();
+        aux->con = p;
+        ult = aux;
+    }
 }
 
 bool Poblacio::hiEsContenidor(ContenidorBrossa *c, node *contenidor) {
@@ -45,11 +52,11 @@ bool Poblacio::hiEsContenidor(ContenidorBrossa *c, node *contenidor) {
     return false;
 }
 
-void Poblacio::afegirContenidor(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara) {
+void Poblacio::afegirContenidor(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara) noexcept(false) {
     //no se com fer-el
 }
 
-std::string Poblacio::hiEs(std::string codi) {
+std::string Poblacio::hiEs(std::string codi) noexcept(false) {
     node *aux = *contenidor;
     while (aux != nullptr) {
         if (aux->con->getCodi() == codi) {
@@ -60,7 +67,7 @@ std::string Poblacio::hiEs(std::string codi) {
     throw "No es troba a la població";
 }
 
-void Poblacio::eliminarContenidor(ContenidorBrossa *c) {
+void Poblacio::eliminarContenidor(ContenidorBrossa *c) noexcept(false) {
     std::string tipus = c->getType();
     int index = c->colorContenidor(tipus);
     if (!(hiEsContenidor(c, contenidor[index]))) {
@@ -84,15 +91,22 @@ void Poblacio::eliminarContenidor(ContenidorBrossa *c) {
     delete aux;
 }
 
-ContenidorBrossa* Poblacio::mesRendiment() {
-    int mesRendiment = 0;
+ContenidorBrossa* Poblacio::mesRendiment() noexcept(false) {
+    int mesRendiment = 0; int rendiActual = 0;
+    ContenidorBrossa* conMesRendiment = NULL;
     if (contenidor == nullptr) {
         throw "La població no té cap contenidor";
     }
     node *aux = *contenidor;
     while (aux != nullptr) {
-        mesRendiment = aux->con->getReciclat(); //com fer pk el metode retorni nomes l'atribut
+        rendiActual = aux->con->quantReciclat();
+        if (rendiActual > mesRendiment) {
+            conMesRendiment = aux->con;
+            mesRendiment = rendiActual;
+        }
+        aux = aux->seg;
     }
+    return conMesRendiment;
 }
 
 int Poblacio::getQuants(int color) {
@@ -106,9 +120,17 @@ int Poblacio::getQuants(int color) {
 }
 
 int Poblacio::getQuants() {
-    int cont = 0;
-    for (int i=0; i<5; i++) {
-        cont+=getQuants(i);
+    int cont = 0; int color = 0;
+    node *aux = *contenidor;
+    node *aux2;
+    while (aux != nullptr) {
+        aux2 = contenidor[color];
+        while (aux2 != nullptr) {
+            cont += getQuants(color);
+            aux2 = aux2->seg;
+        }
+        color++;
+        aux = aux->seg;
     }
     return cont;
 }

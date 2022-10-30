@@ -33,3 +33,7 @@ Rebuig::~Rebuig() {
 void Rebuig::buidat(float pes) {
     reciclat = (pes - tara)*1.75;
 }
+
+float Rebuig::quantReciclat() {
+    return reciclat;
+}

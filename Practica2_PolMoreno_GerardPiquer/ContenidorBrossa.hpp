@@ -14,12 +14,12 @@
 class ContenidorBrossa {
 public:
     static const int GROC = 0, MARRO = 1, VERD = 2, GRIS = 3, BLAU = 4;
-    ContenidorBrossa(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara);
-    ContenidorBrossa(std::string codi, int color, int anyColocacio, float tara);
+    ContenidorBrossa(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara) noexcept(false);
+    ContenidorBrossa(std::string codi, int color, int anyColocacio, float tara) noexcept(false);
     std::string getTipusBrossa();
-    void retirarViaPublica();
-    std::string getUbicacio();
-    void setUbicacio(std::string ubicacio);
+    void retirarViaPublica() noexcept(false);
+    std::string getUbicacio() noexcept(false);
+    void setUbicacio(std::string ubicacio) noexcept(false);
     std::string getCodi();
     std::string getEstat();
     bool operator==(ContenidorBrossa *p);
@@ -30,18 +30,19 @@ public:
     virtual std::string getType() = 0;
     virtual std::string getReciclat() = 0;
     virtual ~ContenidorBrossa();
+    virtual float quantReciclat() = 0;
     std::string getColor();
     int colorContenidor(std::string tipus);
     
 private:
-    void checkParams(std::string,int,int,float);
-    bool checkCodi(std::string codi);
-    bool checkAny(int any);
     std::string codi;
     int color;
     std::string ubicacio;
     int anyColocacio;
     int anyRetirada;
+    void checkParams(std::string, int, int, float) noexcept(false);
+    bool checkCodi(std::string codi);
+    bool checkAny(int any);
 
 protected:
     int tara;

@@ -20,6 +20,7 @@ public:
     std::string getType();
     virtual ~Paper();
     void buidat(float pes);
+    float quantReciclat();
     
     
 private:

@@ -16,11 +16,11 @@ public:
     Poblacio();
     Poblacio(ContenidorBrossa* g);
     virtual ~Poblacio();
-    void afegirContenidor(ContenidorBrossa *p);
-    void afegirContenidor(std::string codi, int color, std::string ubicacio,int anyColocacio,float tara);
-    std::string hiEs(std::string codi);
-    void eliminarContenidor(ContenidorBrossa *c);
-    ContenidorBrossa* mesRendiment();
+    void afegirContenidor(ContenidorBrossa *p) noexcept(false);
+    void afegirContenidor(std::string codi, int color, std::string ubicacio,int anyColocacio,float tara) noexcept(false);
+    std::string hiEs(std::string codi) noexcept(false);
+    void eliminarContenidor(ContenidorBrossa *c) noexcept(false);
+    ContenidorBrossa* mesRendiment() noexcept(false);
     int getQuants(int color);
     int getQuants();
     bool operator==(Poblacio d);
