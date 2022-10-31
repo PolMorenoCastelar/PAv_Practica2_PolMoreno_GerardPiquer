@@ -35,6 +35,15 @@ int main() {
     
     std::cout << vic.getQuants(1) << std::endl;
     std::cout << vic.getQuants() << std::endl;
+    contenidorPaper->buidat(200);
+    contenidorOrganic->buidat(300);
+    contOrg2->buidat(400);
+    contenidorRebuig->buidat(200);
+    contenidorVidre->buidat(230);
+    contenidorPlastic->buidat(190);
+    
+    
+    
     ContenidorBrossa *x=vic.mesRendiment();
     x->toString();
    

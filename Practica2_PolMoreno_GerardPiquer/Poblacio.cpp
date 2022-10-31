@@ -113,7 +113,7 @@ void Poblacio::eliminarContenidor(ContenidorBrossa *c) noexcept(false) {
 }
 
 ContenidorBrossa* Poblacio::mesRendiment() noexcept(false) {
-    float mesRendiment = -1; float rendiActual = 0;
+    float mesRendiment = 0; float rendiActual = 0;
     ContenidorBrossa* conMesRendiment = NULL;
     if (contenidor == nullptr) {
         throw "La població no té cap contenidor";
