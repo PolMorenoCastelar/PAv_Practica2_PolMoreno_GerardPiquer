@@ -113,19 +113,21 @@ void Poblacio::eliminarContenidor(ContenidorBrossa *c) noexcept(false) {
 }
 
 ContenidorBrossa* Poblacio::mesRendiment() noexcept(false) {
-    int mesRendiment = 0; int rendiActual = 0;
+    float mesRendiment = -1; float rendiActual = 0;
     ContenidorBrossa* conMesRendiment = NULL;
     if (contenidor == nullptr) {
         throw "La població no té cap contenidor";
     }
-    node *aux = *contenidor;
-    while (aux != nullptr) {
-        rendiActual = aux->con->quantReciclat();
-        if (rendiActual > mesRendiment) {
-            conMesRendiment = aux->con;
-            mesRendiment = rendiActual;
+    for(int i=0;i<4;i++){
+        node *aux = contenidor[i];
+        while (aux != nullptr) {
+            rendiActual = aux->con->quantReciclat();
+            if (rendiActual > mesRendiment) {
+                conMesRendiment = aux->con;
+                mesRendiment = rendiActual;
+            }
+            aux = aux->seg;
         }
-        aux = aux->seg;
     }
     return conMesRendiment;
 }

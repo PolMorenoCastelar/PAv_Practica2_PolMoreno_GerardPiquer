@@ -35,6 +35,9 @@ int main() {
     
     std::cout << vic.getQuants(1) << std::endl;
     std::cout << vic.getQuants() << std::endl;
+    ContenidorBrossa *x=vic.mesRendiment();
+    x->toString();
+   
     
     vic.toString();
 }
