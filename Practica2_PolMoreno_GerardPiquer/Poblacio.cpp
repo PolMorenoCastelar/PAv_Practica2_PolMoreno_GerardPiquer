@@ -15,7 +15,8 @@
 #include "Rebuig.hpp"
 #include "Organic.hpp"
 
-Poblacio::Poblacio(){
+
+Poblacio::Poblacio() {
     contenidor = new node*[5];
     contenidor[0] = nullptr;
     contenidor[1] = nullptr;
@@ -51,7 +52,7 @@ int Poblacio::onVa(ContenidorBrossa *p) {
     } else if (p->getType().compare("ORGANIC") == 0) {
         return ContenidorBrossa::MARRO;
     }
-    return NULL;
+    return -1;
 }
 
 bool Poblacio::hiEsContenidor(ContenidorBrossa *c, node *contenidor) {
@@ -81,10 +82,14 @@ void Poblacio::afegirContenidor(std::string codi, int color, std::string ubicaci
 std::string Poblacio::hiEs(std::string codi) noexcept(false) {
     node *aux = *contenidor;
     while (aux != nullptr) {
-        if (aux->con->getCodi() == codi) {
-            return "El contenidor amb codi " + codi + " es de color " + aux->con->getColor();
+        for (int i=0; i<5; i++) {
+            node *aux2 = contenidor[i];
+            if (aux2->con->getCodi() == codi) {
+                return "El contenidor amb codi " + codi + " es de color " + aux2->con->getColor();
+            }
+            aux2 = aux2->seg;
         }
-       aux = aux->seg;
+        aux = aux->seg;
     }
     throw "No es troba a la població";
 }
@@ -113,12 +118,12 @@ void Poblacio::eliminarContenidor(ContenidorBrossa *c) noexcept(false) {
 }
 
 ContenidorBrossa* Poblacio::mesRendiment() noexcept(false) {
-    float mesRendiment = 0; float rendiActual = 0;
+    float mesRendiment = 0, rendiActual = 0;
     ContenidorBrossa* conMesRendiment = NULL;
     if (contenidor == nullptr) {
         throw "La població no té cap contenidor";
     }
-    for(int i=0;i<4;i++){
+    for (int i=0; i<5; i++){
         node *aux = contenidor[i];
         while (aux != nullptr) {
             rendiActual = aux->con->quantReciclat();
@@ -143,31 +148,23 @@ int Poblacio::getQuants(int color) {
 }
 
 int Poblacio::getQuants() {
-    int cont = 0; int color = 0;
-    node *aux = *contenidor;
-    node *aux2;
-    while (aux != nullptr) {
-        aux2 = contenidor[color];
-        while (aux2 != nullptr) {
-            cont += getQuants(color);
-            aux2 = aux2->seg;
-        }
-        color++;
-        aux = aux->seg;
+    int cont = 0;
+    for (int i=0; i<5; i++) {
+        cont+=this->getQuants(i);
     }
     return cont;
 }
 
 bool Poblacio::operator==(Poblacio d) {
-    return this->getQuants() == d.getQuants();
+    return getQuants() == d.getQuants();
 }
 
 bool Poblacio::operator<(Poblacio d) {
-    return this->getQuants() < d.getQuants();
+    return getQuants() < d.getQuants();
 }
 
 bool Poblacio::operator>(Poblacio d) {
-    return !(*this == d || *this < d);
+    return !(this->getQuants() == d.getQuants() || this->getQuants() < d.getQuants());
 }
 
 void Poblacio::toString() {
@@ -176,28 +173,28 @@ void Poblacio::toString() {
     node *verd = contenidor[2];
     node *gris = contenidor[3];
     node *blau = contenidor[4];
+    std::cout << "Contenidors grocs" << std::endl;
     while (groc != nullptr) {
-        std::cout << "Contenidors grocs" << std::endl;
         groc->con->toString();
         groc = groc->seg;
     }
+    std::cout << "Contenidors marrons" << std::endl;
     while (marro != nullptr) {
-        std::cout << "Contenidors marrons" << std::endl;
         marro->con->toString();
         marro = marro->seg;
     }
+    std::cout << "Contenidors verds" << std::endl;
     while (verd != nullptr) {
-        std::cout << "Contenidors verds" << std::endl;
         verd->con->toString();
         verd = verd->seg;
     }
+    std::cout << "Contenidors grisos" << std::endl;
     while (gris != nullptr) {
-        std::cout << "Contenidors grisos" << std::endl;
         gris->con->toString();
         gris = gris->seg;
     }
+    std::cout << "Contenidors blaus" << std::endl;
     while (blau != nullptr) {
-        std::cout << "Contenidors blaus" << std::endl;
         blau->con->toString();
         blau = blau->seg;
     }

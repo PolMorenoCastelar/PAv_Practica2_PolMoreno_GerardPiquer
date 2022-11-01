@@ -10,7 +10,7 @@
 #include <time.h>
 #include <string.h>
 
-//CONSTRUCTOR NORMAL
+
 ContenidorBrossa::ContenidorBrossa(std::string codi, int color, std::string ubicacio, int anyColocacio, float tara) noexcept(false) {
     checkParams(codi, color, anyColocacio, tara);
     this->codi=codi;
@@ -21,11 +21,9 @@ ContenidorBrossa::ContenidorBrossa(std::string codi, int color, std::string ubic
     
 }
 
-//CONSTRUCTOR SOBRECARREGAT
 ContenidorBrossa::ContenidorBrossa(std::string codi, int color, int anyColocacio,float tara) noexcept(false) : ContenidorBrossa(codi, color, NULL, anyColocacio, tara) {
 }
 
-//CHECK DELS PARAMETRES
 void ContenidorBrossa::checkParams(std::string codi, int color, int anyColocacio, float tara) noexcept(false) {
     if (!checkCodi(codi)) {
         throw "Codi amb valor null";
@@ -41,7 +39,6 @@ void ContenidorBrossa::checkParams(std::string codi, int color, int anyColocacio
     }
 }
 
-//CHECK DEL CODI QUE CONTINGUI LLETRES Y NUMEROS
 bool ContenidorBrossa::checkCodi(std::string codi) {
     std::string lletres = codi.substr(0,2);
     std::string numeros = codi.substr(codi.size()-4);
